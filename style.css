@@ -431,7 +431,8 @@ p:last-child { margin-bottom: 0; }
 /* Contact */
 .contact__grid {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: 1fr;
+  max-width: 480px;
   gap: 48px;
 }
 .contact__info { display: flex; flex-direction: column; gap: 18px; }

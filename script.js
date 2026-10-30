@@ -80,7 +80,7 @@ const projects = [
       "AI recommendation microservice (Flask + Random Forest) that scores vehicles against budget, type, duration, and purpose and returns a top pick with alternatives",
     ],
     github: "https://github.com/Akshitha2111/drivelite",
-    demo: "https://drivelite-frontend.onrender.com",
+    demo: "",
   },
 
   /*
@@ -175,69 +175,6 @@ function observeReveal() {
     { threshold: 0.15 }
   );
   items.forEach((el) => observer.observe(el));
-}
-
-/* --------------------------------------------------------------------------
-   5. Contact form validation
-   No backend is connected. handleContactSubmit() is where you wire up
-   Formspree, EmailJS, or your own API endpoint.
-   -------------------------------------------------------------------------- */
-(function initContactForm() {
-  const form = document.getElementById("contactForm");
-  if (!form) return;
-
-  const nameField = document.getElementById("name");
-  const emailField = document.getElementById("email");
-  const messageField = document.getElementById("message");
-  const status = document.getElementById("formStatus");
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    status.textContent = "";
-
-    const isNameValid = validateField(nameField, "nameError", (v) => v.trim().length >= 2, "Enter your name.");
-    const isEmailValid = validateField(
-      emailField,
-      "emailError",
-      (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
-      "Enter a valid email address."
-    );
-    const isMessageValid = validateField(
-      messageField,
-      "messageError",
-      (v) => v.trim().length >= 10,
-      "Message should be at least 10 characters."
-    );
-
-    if (!isNameValid || !isEmailValid || !isMessageValid) return;
-
-    handleContactSubmit({
-      name: nameField.value.trim(),
-      email: emailField.value.trim(),
-      message: messageField.value.trim(),
-    });
-  });
-
-  function validateField(field, errorId, validator, message) {
-    const errorEl = document.getElementById(errorId);
-    const valid = validator(field.value);
-    field.classList.toggle("invalid", !valid);
-    errorEl.textContent = valid ? "" : message;
-    return valid;
-  }
-})();
-
-/**
- * Called once the form passes validation.
- * Currently a placeholder — no backend is connected.
- * To go live, replace the body of this function with a fetch() call to
- * Formspree, EmailJS, or your own API endpoint, then update formStatus.
- */
-function handleContactSubmit(data) {
-  const status = document.getElementById("formStatus");
-  console.log("Contact form submitted (no backend connected yet):", data);
-  status.textContent =
-    "This form isn't connected to a backend yet — see handleContactSubmit() in script.js.";
 }
 
 /* --------------------------------------------------------------------------
